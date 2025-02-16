@@ -99,7 +99,7 @@ def get_bet():
         amount = input("What would you like to bet on each line? $")
         if amount.isdigit(): 
             amount = int(amount)
-            if  MAX_Bet >= amount >=  MIN_Bet:            #reverse the order to test later
+            if  MAX_Bet >= amount >=  MIN_Bet:            
                 break
             else: 
                 print(f"Amount must be between ${MIN_Bet} - ${MAX_Bet}.")
