@@ -41,6 +41,13 @@ def copy_and_overwrite(source, dest):
         shutil.rmtree(dest)
     shutil.copytree(source, dest)
 
+def make_json_metadata_file(path, game_dirs): 
+    data = {
+        "gameNames": game_dirs, 
+        "numberOfGames": len(game_dirs)
+    }
+    with open(path, "w") as f: 
+        json.dump(data, f)
 
 def main(source, target): 
     cwd = os.getcwd()
@@ -56,6 +63,8 @@ def main(source, target):
         dest_path = os.path.join(target_path, dest)
         copy_and_overwrite(src, dest_path)
 
+    json_path = os.path.join(target_path, "metadata.json")
+    make_json_metadata_file(json_path, new_game_dirs)
 
 if __name__ == "__main__": 
     args = sys.argv
